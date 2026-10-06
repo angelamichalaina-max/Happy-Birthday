@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 17th Birthday! 👑💖</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+        h1, h2, h3, .font-heading { font-family: 'Comfortaa', cursive; }
+        .pop-in { animation: popIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+        @keyframes popIn { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-pink-300 via-rose-200 to-pink-400 text-slate-800 min-h-screen pb-20 relative overflow-x-hidden">
+
+    <!-- AUDIO ELEMENT (Αρχείο song.mp3 στον ίδιο φάκελο) -->
+    <audio id="bg-music" loop preload="auto">
+        <source src="ΧΡΟΝΙΑ ΠΟΛΛΑ για τα γενεθλια σου... - Pavlos.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- 🛑 STEP 1: INITIAL ENTRY DISCLAIMER SCREEN -->
+    <div id="entry-screen" class="fixed inset-0 bg-pink-900/90 backdrop-blur-md z-50 flex items-center justify-center p-4">
+        <div class="bg-white border-4 border-pink-300 rounded-3xl max-w-sm w-full p-6 text-center shadow-2xl pop-in">
+            <div class="text-5xl mb-3">🎂🎀</div>
+            <h2 class="text-2xl font-bold text-pink-600 font-heading mb-2">
+                Προσοχή!
+            </h2>
+            <p class="text-pink-900 text-xs font-medium mb-6 leading-relaxed">
+                Για να εισέλθετε σε αυτή την ιστοσελίδα πρέπει να επιβεβαιώσετε ότι είστε <strong>άνω των 17 ετών</strong>! 😉💖
+            </p>
+            <button onclick="enterSite()" class="w-full bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold py-3.5 px-6 rounded-2xl shadow-lg transform active:scale-95 transition text-sm">
+                Είμαι 17+
+            </button>
+        </div>
+    </div>
+
+    <!-- 💖 STEP 2: MAIN WEBSITE (Αρχικά Κρυμμένο) -->
+    <div id="main-website" class="hidden">
+
+        <!-- Floating Music Control Button (Για να μπορεί να κλείσει/ανοίξει τη μουσική αν θέλει) -->
+        <button onclick="toggleMusic()" class="fixed bottom-4 right-4 z-40 bg-white/80 backdrop-blur-md border-2 border-pink-300 text-pink-600 p-3 rounded-full shadow-lg flex items-center gap-2 text-xs font-bold">
+            <span id="music-icon">🎵</span> <span id="music-text">Music Playing</span>
+        </button>
+
+        <!-- Header Section -->
+        <header class="text-center pt-10 pb-6 px-4">
+            <div class="inline-flex items-center gap-2 bg-white/80 border border-pink-300 text-pink-600 text-xs font-bold px-4 py-1.5 rounded-full shadow-md uppercase tracking-wider mb-3">
+                <span>👑</span> Official 17th Birthday Edition <span>✨</span>
+            </div>
+            <h1 class="text-3xl sm:text-5xl font-extrabold text-pink-600 mb-2 font-heading">
+                Χρόνια πολλά        <br>Δημητρούλα!</br> 🎉💖
+            </h1>
+            <p class="text-pink-900 text-xs sm:text-sm max-w-md mx-auto font-medium leading-relaxed bg-white/50 p-3 rounded-2xl border border-white/60 shadow-sm">
+                 3 μήνες γεμάτοι γέλια, 2 κατασκηνώσεις και αμέτρητες στιγμές! ✨💖
+            </p>
+        </header>
+
+        <!-- Main Grid Content -->
+        <main class="max-w-4xl mx-auto px-4 space-y-8">
+
+            <!-- CAMP 1 -->
+            <section class="bg-white/70 border-2 border-pink-200 rounded-3xl p-5 shadow-xl">
+                <div class="mb-4">
+                    <h2 class="text-xl sm:text-2xl font-bold text-pink-600 flex items-center gap-2 font-heading">
+                        <span>
+                        ️</span> round 1: Κατασκήνωση δημοτικού 
+                    </h2>
+                    <p class="text-xs text-pink-800/70 font-medium mt-0.5">Και κάπως έτσι βρεθήκαμε στην ίδια ομάδα </p>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    <button onclick="openModal('img', 'ομαδικηΚατ1.jpg', 'Η κατασκήνωση τελείωσε εκείνη τη μέρα, η φιλία μας όμως μόλις είχε αρχίσει...💖')" class="bg-white border-2 border-pink-200 rounded-2xl p-3 text-left shadow-sm">
+                        <div class="w-full h-24 bg-pink-100 rounded-xl mb-2 flex items-center justify-center text-xl">📸</div>
+                        <div class="text-[10px] font-bold text-pink-400">Memory #01</div>
+                        <div class="text-xs font-bold text-pink-700 truncate"> </div>
+                    </button>
+                    <button onclick="openModal('img', 'κοινη_κατ1.jpg', '(Δεν έμαθα ποτέ το όνομα του κοριτσιού 😁 ) ')" class="bg-white border-2 border-pink-200 rounded-2xl p-3 text-left shadow-sm">
+                        <div class="w-full h-24 bg-pink-100 rounded-xl mb-2 flex items-center justify-center text-xl">📸</div>
+                        <div class="text-[10px] font-bold text-pink-400">Memory #02</div>
+                        <div class="text-xs font-bold text-pink-700 truncate"></div>
+                    </button>
+                    <button onclick="openModal('img', 'βαψιμο.jpg', 'Ετοιμάζοντας τα δωράκια των παιδιών, (χωρις να σκεφτόμαστε ✨)')" class="bg-white border-2 border-pink-200 rounded-2xl p-3 text-left shadow-sm">
+                        <div class="w-full h-24 bg-pink-100 rounded-xl mb-2 flex items-center justify-center text-xl">📸</div>
+                        <div class="text-[10px] font-bold text-pink-400">Memory #03</div>
+                        <div class="text-xs font-bold text-pink-700 truncate"></div>
+                    </button>
+                    <button onclick="openModal('img', 'κατ1_παιδια.jpg', '')" class="bg-white border-2 border-pink-200 rounded-2xl p-3 text-left shadow-sm">
+                        <div class="w-full h-24 bg-pink-100 rounded-xl mb-2 flex items-center justify-center text-xl">📸</div>
+                        <div class="text-[10px] font-bold text-pink-400">Memory #04</div>
+                        <div class="text-xs font-bold text-pink-700 truncate"></div>
+                    </button>
+                    <button onclick="openModal('img', 'τρομκτικη.jpg', '')" class="bg-white border-2 border-pink-200 rounded-2xl p-3 text-left shadow-sm">
+                        <div class="w-full h-24 bg-pink-100 rounded-xl mb-2 flex items-center justify-center text-xl">📸</div>
+                        <div class="text-[10px] font-bold text-pink-400">Memory #05</div>
+                        <div class="text-xs font-bold text-pink-700 truncate"></div>
+                    </button>
+                    <button onclick="openModal('video', 'χορος_τελοςκατ1.mp4', 'Εκείνο το βράδυ κοιμηθήκαμε 7 το πρωί 😅 ')" class="bg-white border-2 border-pink-300 rounded-2xl p-3 text-left shadow-sm">
+                        <div class="w-full h-24 bg-pink-200 rounded-xl mb-2 flex items-center justify-center text-xl">🎥</div>
+                        <div class="text-[10px] font-bold text-pink-500">Video #01</div>
+                        <div class="text-xs font-bold text-pink-800 truncate"></div>
+                    </button>
+                    <button onclick="openModal('video', 'χροςΟμαδοπουλα.mp4', ' ')" class="bg-white border-2 border-pink-300 rounded-2xl p-3 text-left shadow-sm">
+                        <div class="w-full h-24 bg-pink-200 rounded-xl mb-2 flex items-center justify-center text-xl">🎥</div>
+                        <div class="text-[10px] font-bold text-pink-500">Video #02</div>
+                        <div class="text-xs font-bold text-pink-800 truncate"></div>
+                    </button>
+                    <button onclick="openModal('video', 'βραδυ_υπνος.mp4', 'Αυτές οι βραδίες θα μείνουν αξέχαστες! ')" class="bg-white border-2 border-pink-300 rounded-2xl p-3 text-left shadow-sm">
+                        <div class="w-full h-24 bg-pink-200 rounded-xl mb-2 flex items-center justify-center text-xl">🎥</div>
+                        <div class="text-[10px] font-bold text-pink-500">Video #03</div>
+                        <div class="text-xs font-bold text-pink-800 truncate"></div>
+                    </button>
+                    <button onclick="openModal('video', 'just_dance.mp4', ' ')" class="bg-white border-2 border-pink-300 rounded-2xl p-3 text-left shadow-sm">
+                        <div class="w-full h-24 bg-pink-200 rounded-xl mb-2 flex items-center justify-center text-xl">🎥</div>
+                        <div class="text-[10px] font-bold text-pink-500">Video #04</div>
+                        <div class="text-xs font-bold text-pink-800 truncate"></div>
+                    </button>
+                </div>
+            </section>
+
+            <!-- CAMP 2 -->
+            <section class="bg-white/70 border-2 border-rose-200 rounded-3xl p-5 shadow-xl">
+                <div class="mb-4">
+                    <h2 class="text-xl sm:text-2xl font-bold text-rose-600 flex items-center gap-2 font-heading">
+                        <span>🔥</span> round 2: κατασκήνωση γυμνασίου-λυκείου
+                    </h2>
+                    <p class="text-xs text-pink-800/70 font-medium mt-0.5"> Και να που τελικά ξανά βρεθήκαμε στην ίδια κατασκήνωση ως στελέχη αλλά σε άλλες ομάδες </p>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    <button onclick="openCamp2Media(1, 'img', 'κατ2_μαζιομαδα1.jpg', 'Δεύτερη κατασκήνωση μαζί! 🩷')" class="bg-white border-2 border-rose-200 rounded-2xl p-3 text-left shadow-sm">
+                        <div class="w-full h-24 bg-rose-100 rounded-xl mb-2 flex items-center justify-center text-xl">📸</div>
+                        <div class="text-[10px] font-bold text-rose-400">Memory #07</div>
+                        <div class="text-xs font-bold text-rose-700 truncate"></div>
+                    </button>
+                    <button onclick="openCamp2Media(2, 'img', 'αστειαομαδικη1.jpg', ' ')" class="bg-white border-2 border-rose-200 rounded-2xl p-3 text-left shadow-sm">
+                        <div class="w-full h-24 bg-rose-100 rounded-xl mb-2 flex items-center justify-center text-xl">📸</div>
+                        <div class="text-[10px] font-bold text-rose-400">Memory #08</div>
+                        <div class="text-xs font-bold text-rose-700 truncate"></div>
+                    </button>
+                    <button onclick="openCamp2Media(3, 'img', 'γελιοΜαρκελλα.jpg', ' ')" class="bg-white border-2 border-rose-200 rounded-2xl p-3 text-left shadow-sm">
+                        <div class="w-full h-24 bg-rose-100 rounded-xl mb-2 flex items-center justify-center text-xl">📸</div>
+                        <div class="text-[10px] font-bold text-rose-400">Memory #09</div>
+                        <div class="text-xs font-bold text-rose-700 truncate"></div>
+                    </button>
+                    <button onclick="openCamp2Media(4, 'img', 'κιουτΜεΜαρκελλα.jpg', '')" class="bg-white border-2 border-rose-200 rounded-2xl p-3 text-left shadow-sm">
+                        <div class="w-full h-24 bg-rose-100 rounded-xl mb-2 flex items-center justify-center text-xl">📸</div>
+                        <div class="text-[10px] font-bold text-rose-400">Memory #10</div>
+                        <div class="text-xs font-bold text-rose-700 truncate"></div>
+                    </button>
+                    <button onclick="openCamp2Media(5, 'img', 'γηπεδο.jpg', 'Από τις πιο ωραίες φωτογραφίες (οντως)')" class="bg-white border-2 border-rose-200 rounded-2xl p-3 text-left shadow-sm">
+                        <div class="w-full h-24 bg-rose-100 rounded-xl mb-2 flex items-center justify-center text-xl">📸</div>
+                        <div class="text-[10px] font-bold text-rose-400">Memory #11</div>
+                        <div class="text-xs font-bold text-rose-700 truncate"></div>
+                    </button>
+                    <button onclick="openCamp2Media(6, 'img', 'φωτοΜαζι.jpg', '  ')" class="bg-white border-2 border-rose-200 rounded-2xl p-3 text-left shadow-sm">
+                        <div class="w-full h-24 bg-rose-100 rounded-xl mb-2 flex items-center justify-center text-xl">📸</div>
+                        <div class="text-[10px] font-bold text-rose-400">Memory #12</div>
+                        <div class="text-xs font-bold text-rose-700 truncate"></div>
+                    </button>
+                                 <button onclick="openCamp2Media(6, 'img', 'γηπεδο2.jpg', '  ')" class="bg-white border-2 border-rose-200 rounded-2xl p-3 text-left shadow-sm">
+                        <div class="w-full h-24 bg-rose-100 rounded-xl mb-2 flex items-center justify-center text-xl">📸</div>
+                        <div class="text-[10px] font-bold text-rose-400">Memory #13</div>
+                        <div class="text-xs font-bold text-rose-700 truncate"></div>
+                    </button>
+                                 <button onclick="openCamp2Media(6, 'img', 'ομαδικη1.jpg', '  ')" class="bg-white border-2 border-rose-200 rounded-2xl p-3 text-left shadow-sm">
+                        <div class="w-full h-24 bg-rose-100 rounded-xl mb-2 flex items-center justify-center text-xl">📸</div>
+                        <div class="text-[10px] font-bold text-rose-400">Memory #14</div>
+                        <div class="text-xs font-bold text-rose-700 truncate"> </div>
+                    </button>
+                    <button onclick="openCamp2Media(7, 'video', 'κατ2_τραγουδι.mp4', 'Αυτό το βίντεο είναι ο ορισμός της κατασκήνωσης')" class="bg-white border-2 border-rose-300 rounded-2xl p-3 text-left shadow-sm">
+                        <div class="w-full h-24 bg-rose-200 rounded-xl mb-2 flex items-center justify-center text-xl">🎥</div>
+                        <div class="text-[10px] font-bold text-rose-500">Video #04</div>
+                        <div class="text-xs font-bold text-rose-800 truncate"></div>
+                    </button>
+                    <button onclick="openCamp2Media(8, 'video', 'κραυγεςΠρωτης.mp4', ' Στο κανονικό βίντεο στο 50 δευτερόλεπτο περίπου είναι ο τρόπος που με κοιτούσες στην πρώτη κατασκήνωση συνέχεια  😂 ')" class="bg-white border-2 border-rose-300 rounded-2xl p-3 text-left shadow-sm">
+                        <div class="w-full h-24 bg-rose-200 rounded-xl mb-2 flex items-center justify-center text-xl">🎥</div>
+                        <div class="text-[10px] font-bold text-rose-500">Video #05</div>
+                        <div class="text-xs font-bold text-rose-800 truncate"></div>
+                    </button>
+                    <button onclick="openCamp2Media(9, 'video', 'υμνοςΜεΜαρκελλα.mp4', ' ')" class="bg-white border-2 border-rose-300 rounded-2xl p-3 text-left shadow-sm">
+                        <div class="w-full h-24 bg-rose-200 rounded-xl mb-2 flex items-center justify-center text-xl">🎥</div>
+                        <div class="text-[10px] font-bold text-rose-500">Video #06</div>
+                        <div class="text-xs font-bold text-rose-800 truncate"></div>
+                    </button>
+                </div>
+            </section>
+
+            <!-- BONUS MEMORY SECTION -->
+            <section id="bonus-section" class="hidden bg-gradient-to-r from-amber-100 via-pink-100 to-rose-100 border-2 border-amber-300 rounded-3xl p-5 shadow-xl pop-in">
+                <div class="mb-3 text-center">
+                    <span class="bg-amber-300 text-amber-900 text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-widest shadow-sm">✨ Unlocked Secret Memory</span>
+                    <h2 class="text-xl font-bold text-amber-800 font-heading mt-1">Η αγαπημένη σου φωτογραφία</h2>
+                </div>
+                <div class="max-w-xs mx-auto">
+                    <button onclick="openModal('img', 'μαγειρας.jpg ', 'Ξέρω πόσο πολύ σου άρεσε, οπότε δεν μπορούσα να μην την βάλω 😁💖')" class="w-full bg-white border-2 border-amber-300 rounded-2xl p-3 text-left shadow-md">
+                        <div class="w-full h-32 bg-amber-50 rounded-xl mb-2 flex items-center justify-center text-3xl">✨🎁</div>
+                        <div class="text-[10px] font-bold text-amber-500">Best foto </div>
+                        <div class="text-xs font-bold text-amber-900">Δες ξανά την καλύτερη φωτογραφία 😁🩷</div>
+                    </button>
+                </div>
+            </section>
+
+            <!-- TRIP SECTION -->
+            <section class="bg-white/70 border-2 border-purple-200 rounded-3xl p-5 shadow-xl">
+                <div class="mb-4">
+                    <h2 class="text-xl sm:text-2xl font-bold text-purple-600 flex items-center gap-2 font-heading">
+                        <span></span> Τριήμερο Στελεχών
+                    </h2>
+                    <p class="text-xs text-purple-800/70 font-medium mt-0.5">Οι καλύτερες στιγμές συνεχίζονται! ✨</p>
+                </div>
+                <div class="max-w-xs mx-auto">
+                    <button onclick="openModal('img', 'κοινη_τριημερο.jpg', ' ')" class="w-full bg-white border-2 border-purple-200 rounded-2xl p-3 text-left shadow-md">
+                        <div class="w-full h-32 bg-purple-100 rounded-xl mb-2 flex items-center justify-center text-3xl">📸✨</div>
+                        <div class="text-[10px] font-bold text-purple-400"></div>
+                        <div class="text-xs font-bold text-purple-700"> 🩷</div>
+                    </button>
+                    
+                           <button onclick="openModal('img', 'στελεχωντριημερο.jpg', ' ')" class="w-full bg-white border-2 border-purple-200 rounded-2xl p-3 text-left shadow-md">
+                        <div class="w-full h-32 bg-purple-100 rounded-xl mb-2 flex items-center justify-center text-3xl">📸✨</div>
+                        <div class="text-[10px] font-bold text-purple-400"></div>
+                        <div class="text-xs font-bold text-purple-700">Τριήμερο Στελεχών</div>
+                    </button>
+                </div>
+            </section>
+
+            <!-- WISH LETTER -->
+            <section class="bg-gradient-to-r from-pink-500 to-rose-500 text-white rounded-3xl p-6 text-center shadow-2xl border-4 border-white/60">
+                <div class="space-y-3">
+                    <span class="text-3xl block">💌</span>
+                    <h3 class="text-xl font-extrabold font-heading">Happy 17th Birthday!</h3>
+                    <p class="text-pink-50 text-xs sm:text-sm leading-relaxed font-medium">
+Δεν πίστευα ποτέ ότι μέσα σε τόσο λίγο χρόνο θα γνώριζα κάποια με την οποία θα ένιωθα τόσο άνετα να μιλάω για τον Θεό, την πίστη, τις απορίες και τους προβληματισμούς μου. Χαίρομαι πολύ που μπορούμε να κάνουμε αυτές τις συζητήσεις και να μιλάμε τόσο ανοιχτά η μία στην άλλη. 🩷
+
+Είναι λίγο αστείο ότι γνωριστήκαμε στην κατασκήνωση, περάσαμε κάποιες πολύ όμορφες μέρες εκεί και κάποια στιγμή η κατασκήνωση τελείωσε. Μόνο που τελικά η τελευταία μέρα της κατασκήνωσης δεν ήταν το τέλος, αλλά μάλλον η αρχή της φιλίας μας. 😁🩷
+
+Μπορεί να γνωριζόμαστε μόλις 3 μήνες, αλλά ήταν παραπάνω από αρκετοί για να φτιάξουμε πολλές όμορφες αναμνήσεις!
+
+Είσαι ένας από τους πιο φωτεινούς ανθρώπους που έχω γνωρίσει! Να τα εκατοστήσεις, να είσαι πάντα χαμογελαστή, δημιουργική και η  χρονιά των 17 να ειναι γεμάτη όμορφες στιγμές και πολλές επιτυχίες! 🥳
+
+Και πάνω απ' όλα, εύχομαι ο Θεός να είναι πάντα κοντά σου, να σε οδηγεί σε κάθε καινούριο βήμα και να σου δίνει δύναμη σε ό,τι κι αν έρθει. Να συνεχίσεις να ψάχνεις, να ρωτάς, να προβληματίζεσαι και να βρίσκεις τον δρόμο σου κοντά Του. 💖
+
+Ανυπομονώ για όσα έχουμε ακόμα να ζήσουμε και φυσικά για τις επόμενες κατασκηνώσεις! 😂🩷
+
+Χρόνια πολλάαα! 🎂✨
+
+                    </p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- POP-UP MODAL -->
+    <div id="modal" class="fixed inset-0 bg-pink-950/60 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white border-4 border-pink-300 rounded-3xl max-w-lg w-full p-4 relative pop-in shadow-2xl">
+            <button onclick="closeModal()" class="absolute top-3 right-3 bg-pink-100 text-pink-600 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shadow-sm">✕</button>
+            <div id="media-container" class="rounded-2xl overflow-hidden bg-pink-50 max-h-[55vh] flex items-center justify-center mb-3 border border-pink-100"></div>
+            <div id="modal-caption" class="text-pink-900 text-xs sm:text-sm text-center font-bold px-2"></div>
+        </div>
+    </div>
+
+    <!-- JS LOGIC -->
+    <script>
+        const camp2Viewed = { 1: false, 2: false, 3: false, 4: false, 5: false, 6: false, 7: false, 8: false, 9: false };
+        let bonusTriggered = false;
+        let isPlaying = false;
+
+        function enterSite() {
+            // Hide Disclaimer Screen
+            document.getElementById('entry-screen').classList.add('hidden');
+            // Show Main Website
+            document.getElementById('main-website').classList.remove('hidden');
+
+            // Start Audio Playback
+            const audio = document.getElementById('bg-music');
+            audio.play().then(() => {
+                isPlaying = true;
+            }).catch(e => {
+                console.log("Audio play error:", e);
+            });
+
+            // Initial Confetti Explosion on Entry
+            if (typeof confetti === 'function') {
+                confetti({ particleCount: 100, spread: 80, origin: { y: 0.5 }, colors: ['#ff69b4', '#ff1493', '#ffd700'] });
+            }
+        }
+
+        function toggleMusic() {
+            const audio = document.getElementById('bg-music');
+            const musicIcon = document.getElementById('music-icon');
+            const musicText = document.getElementById('music-text');
+
+            if (isPlaying) {
+                audio.pause();
+                isPlaying = false;
+                musicIcon.innerText = '🔇';
+                musicText.innerText = 'Paused';
+            } else {
+                audio.play();
+                isPlaying = true;
+                musicIcon.innerText = '🎵';
+                musicText.innerText = 'Music Playing';
+            }
+        }
+
+        function openModal(type, src, caption) {
+            const modal = document.getElementById('modal');
+            const container = document.getElementById('media-container');
+            const captionEl = document.getElementById('modal-caption');
+
+            container.innerHTML = '';
+            if (type === 'img') {
+                container.innerHTML = `<img src="${src}" class="w-full h-full object-contain max-h-[50vh] rounded-2xl">`;
+            } else if (type === 'video') {
+                container.innerHTML = `<video controls autoplay class="w-full max-h-[50vh] rounded-2xl"><source src="${src}" type="video/mp4"></video>`;
+            }
+
+            captionEl.innerText = caption;
+            modal.classList.remove('hidden');
+
+            if (typeof confetti === 'function') {
+                confetti({ particleCount: 70, spread: 60, origin: { y: 0.6 }, colors: ['#ff69b4', '#ff1493', '#ffd700'] });
+            }
+        }
+
+        function openCamp2Media(id, type, src, caption) {
+            camp2Viewed[id] = true;
+            openModal(type, src, caption);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            document.getElementById('media-container').innerHTML = '';
+            modal.classList.add('hidden');
+
+            const allCamp2Viewed = Object.values(camp2Viewed).every(val => val === true);
+            if (allCamp2Viewed && !bonusTriggered) {
+                bonusTriggered = true;
+                document.getElementById('bonus-section').classList.remove('hidden');
+                setTimeout(() => {
+                    openModal('img', 'μαγειρας.jpg', 'Ξέρω ότι είναι η αγαπημένη σου, οπότε δεν μπορούσα να μην την βάλω 😁🩷');
+                }, 300);
+            }
+        }
+    </script>
+</body>
+</html>
